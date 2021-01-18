@@ -1,0 +1,102 @@
+//Fonts//
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,700;0,800;1,600&display=swap");
+
+//Colors//
+$primary-color: #343a40;
+$secondary-color: #20c997;
+$font-primary: "nunito";
+
+.color-text1 {
+    color: $primary-color;
+}
+
+.color-text2 {
+    color: $secondary-color;
+}
+
+.font-dashboard {
+    font-family: $font-primary;
+    font-weight: 600;
+}
+
+.font-table {
+    font-family: $font-primary;
+    font-weight: 500;
+}
+
+.text-login {
+    color: rgb(52, 58, 73);
+}
+
+.edit-check {
+    margin-left: 5px;
+
+    .check1 {
+        margin-right: 20px;
+    }
+}
+
+.home {
+    background-color: $primary-color;
+    color: $primary-color;
+}
+
+.text-menu {
+    font-size: larger;
+    font-weight: 400;
+}
+
+.form-box {
+    padding-left: 50px;
+    padding-right: 100px;
+}
+
+.tab-result {
+    margin-right: 50%;
+}
+
+.font-error {
+    font-size: medium;
+    color: red;
+}
+
+.btn-cust {
+    color: #fff;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-radius: 10px;
+    height: 50px;
+    width: 300px;
+    margin: 15px;
+}
+
+.form-control:focus {
+    border-color: $secondary-color;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+        0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+        0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.navbar-light .nav-link {
+    color: red;
+}
+
+//Login Page
+
+.login-success {
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+}
+
+.box-login {
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+    border-radius: 20px;
+}
