@@ -9,7 +9,7 @@
   </div>
   <!-- /.card-header -->
   <!-- form start -->
-  <form  class="form-box" >
+  <form  class="form-box" method="POST" >
     <div class="card-body">
       <div class="form-group">
         <label for="exampleInputEmail1">Name</label>

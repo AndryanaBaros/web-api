@@ -41,15 +41,15 @@
 								</div>
 
 								<div class="form-group">
-									<label for="phone-number">Phone Number</label>
+									<label for="msisdn">Phone Number</label>
 									
-									@error('phone_number')
-									<input id="phone_number" type="number" class="form-control is-invalid" name="phone_number"  required data-eye placeholder="phone number" value="{{ old('phone_number') }}">
+									@error('msisdn')
+									<input id="msisdn" type="number" class="form-control is-invalid" name="msisdn"  required data-eye placeholder="phone number" value="{{ old('msisdn') }}">
 									<div class="invalid-feedback">
 								    	{{ $message }}
 									</div>
 									@else
-									<input id="phone_number" type="number" class="form-control" name="phone_number"  required data-eye placeholder="phone number" value="{{ old('phone_number') }}">
+									<input id="msisdn" type="number" class="form-control" name="msisdn"  required data-eye placeholder="phone number" value="{{ old('msisdn') }}">
 									@enderror
 
 								</div>

@@ -37,7 +37,7 @@ class NewLoginController extends Controller
         $request->validate ([
             'name'=>'required',
             'email'=>'required|unique:users',
-            'phone_number'=>'required|unique:users',
+            'msisdn'=>'required|unique:users',
             'password'=>'required|max:10|min:8',
 
         ],
@@ -48,7 +48,7 @@ class NewLoginController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'phone_number' => $request->phone_number,
+            'msisdn' => $request->msisdn,
             'department' => $request->department,
             'password' => bcrypt($request->password),
             'level' => 'admin',
