@@ -61,7 +61,7 @@
           <img src="{{asset('AdminLTE/avatar.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info font-dashboard">
-          <a href="#" class="d-block font-weight-bold text-capitalize" >{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block font-weight-bold text-capitalize" >Admin</a>
         </div>
       </div>
 
