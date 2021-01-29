@@ -10,7 +10,7 @@ use App\Http\Controllers\NewLoginController;
 
 
 Route::get('/login', function () {
-    return redirect('/');
+    return view('pages.newlogin');
 })->name('login');
 Route::get('/newregister', function () {
     return view('pages.newregister');
@@ -29,7 +29,7 @@ Route::group(['middleware' => ['otentikasiuser']], function() {
     Route::post('/matchktp', [KtpController::class, 'matchktp'])->name('matchktp');
 
     Route::get('/location', [LocationController::class, 'location'])->name('location');
-    Route::post('/matchlocation', [LocationController::class, 'matchlocation'])->name('matchlocation');
+    Route::get('/matchlocation', [LocationController::class, 'matchlocation'])->name('matchlocation');
 
     Route::get('/interest', [InterestController::class, 'interest'])->name('interest');
 });

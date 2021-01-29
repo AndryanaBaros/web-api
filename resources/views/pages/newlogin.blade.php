@@ -38,9 +38,6 @@
 
 								<div class="form-group color-text1">
 									<label class="" for="password">Password
-										<a href="forgot.html" class="float-right color-text2">
-											Forgot Password?
-										</a>
 									</label>
 									<input id="password" type="password" class="form-control" name="password" required data-eye>
 								</div>

@@ -96,14 +96,14 @@
               </p>
             </a>
           </li> 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{route('interest')}}" class="nav-link">
               <i class="nav-icon fas fa-star"></i>
               <p>
                 Interest
               </p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

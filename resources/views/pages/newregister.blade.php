@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="{{asset('login/css/my-login.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('mylogin/css/my-login.css')}}">
   <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body class="my-login-page">
@@ -17,8 +17,14 @@
 				<div class="card-wrapper pt-5">
 					<div class="card fat">
 						<div class="card-body box-login font-dashboard ">
+							@if($messages = Session::get('error'))
+							<div class="alert alert-danger ">
+								<div class="strong text-align-center text-center">{{ $messages }}</div>
+							</div>
+							@endif
 							<h4 class="card-title font-weight-bold color-text2" >Register</h4>
-							<form method="GET" class="my-login-validation" action="{{ route('newsaveregister')}}" >
+							<form method="POST" class="my-login-validation" action="{{ route('newsaveregister')}}" >
+								@csrf
 								<div class="form-group" >
 									<label for="name">Name</label>
 									<input id="name" type="text" class="form-control" name="name" required autofocus placeholder="name" value="{{ old('name') }}">
@@ -82,7 +88,7 @@
 									</button>
 								</div>
 								<div class="mt-4 text-center">
-									Already have an account? <a href="{{route('newlogin')}}" class="color-text2">Login</a>
+									Already have an account? <a href="{{route('login')}}" class="color-text2">Login</a>
 								</div>
 							</form>
 						</div>

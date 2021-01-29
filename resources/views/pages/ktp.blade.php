@@ -2,6 +2,13 @@
 @section('title', 'KTP')
 
 @section('container')
+
+@if($messages = Session::get('error'))
+<div class="alert alert-danger ">
+  <div class="strong text-align-center text-center">{{ $messages }}</div>
+</div>
+@endif
+
 <div class="card ">
   <div class="card card-gray-dark font-dashboard">
   <div class="card-header bg-teal">
@@ -14,15 +21,15 @@
     <div class="card-body">
       <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="name" class="form-control"  name="name" id="exampleInputEmail1" placeholder="Enter Name">
+        <input type="name" class="form-control"  name="name" id="exampleInputEmail1" placeholder="name">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">NIK</label>
-        <input type="number" class="form-control" name="nik" id="exampleInputPassword1" placeholder="NIK">
+        <input type="number" class="form-control" name="nik" id="exampleInputPassword1" placeholder="nik">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">MSISD</label>
-        <input type="number" class="form-control" name="msisdn" id="exampleInputPassword1" placeholder="Phone Number">
+        <label for="exampleInputPassword1">MSISDN</label>
+        <input type="number" class="form-control" name="msisdn" id="exampleInputPassword1" placeholder="msisdn">
       </div>
       <div class="form-group">
         <button type="submit" class="btn bg-teal">Submit</button>

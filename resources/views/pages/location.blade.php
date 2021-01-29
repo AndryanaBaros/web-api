@@ -2,6 +2,13 @@
 @section('title', 'Location')
 
 @section('container')
+
+@if($messages = Session::get('error'))
+<div class="alert alert-danger ">
+  <div class="strong text-align-center text-center">{{ $messages }}</div>
+</div>
+@endif
+
 <div class="card" >
   <div class="card card-gray-dark font-dashboard">
   <div class="card-header bg-teal ">
@@ -11,13 +18,6 @@
   <!-- form start -->
   <form  class="form-box" action="{{ route('matchlocation') }}" method="POST">
     @csrf
-    
-    {{-- @if($messages = Session::get('error'))
-    <div class="alert alert-danger ">
-      <div class="strong text-align-center text-center">{{ $messages }}</div>
-    </div>
-    @endif --}}
-                
     <div class="card-body">
       <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
@@ -27,14 +27,14 @@
         <label for="exampleInputPassword1">MSISD</label>
         <input type="number" class="form-control" name="msisdn"  id="exampleInputPassword1" placeholder="MSISDN">
       </div>
-      <div class="row edit-check form-group" name="verify" >
+      <div class="row edit-check form-group"  >
         <label for="verify" class="check1">Verify :</label>
         <div class="custom-control custom-radio check1">
-          <input class="custom-control-input"  type="radio" id="customRadio1" name="customRadio">
+          <input class="custom-control-input"  type="radio" id="customRadio1" name="verify" value="1">
           <label for="customRadio1" class="custom-control-label">Home</label>
         </div>
         <div class="custom-control custom-radio">
-          <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
+          <input class="custom-control-input" type="radio" id="customRadio2" name="verify" value="2" checked>
           <label for="customRadio2" class="custom-control-label">Work</label>
         </div>
       </div>
@@ -56,6 +56,9 @@
   <div class="card-body p-0 pl-5 mb-3 mb-3 tab-result">
     <table class="table table-sm">
       <thead>
+        <tr>
+          <th colspan="3" style="border: 0" ><center>{{ $nama_user }}</center></th>
+        </tr>
         <tr>
           <th style="width: 10px">#</th>
           <th>Result</th>

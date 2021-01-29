@@ -66,38 +66,58 @@ class NewLoginController extends Controller
 
     public function newsaveregister(Request $request) {
         $request->validate ([
-            'name'=>'required',
-            'email'=>'required|unique:users',
-            'msisdn'=>'required|unique:users',
-            'password'=>'required|max:10|min:8',
-
-        ],
-        [
-            'name.required' => 'email tidak boleh sama'
+            'name'=>'required|string',
+            'email'=>'required|email',
+            'department'=>'required|string',
+            'msisdn'=>'required|numeric',
+            'password'=>'required|string',
         ]);
-        
-        try {
-            $this->saveUser($request);
-            return view('pages.dashboard');
-        } catch (\Throwable $th) {
-            // return back()->with('error' ,'Register Failed');
-            return view('pages.dashboard');
-        }
-    }
 
-    public function saveUser(Request $request)
-    {
+        $requestNew = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'msisdn'=> $request->msisdn,
+            'departement' => $request->department,
+            'password'=>$request->password
+        ];
+
+
+        $encd_request =json_encode($requestNew);
         $client = new Client();
-        $encd_request =json_encode($request);
 
-        $response = $client->request('POST','https://10.2.114.62:10041/digihub/demo/app/v1/signup', [
-            'verify'          => false,
-            'headers'         => ['Content-Type'=>'application/json','Authorization'=>'Basic ZmVfZGVtb2FwcDoyMDIxI0QzbTA='],
-            'body'            => $encd_request,
-            'allow_redirects' => false
-        ]);
 
-        return $response->getStatusCode();
+        try {
+            $response = $client->request('POST','https://10.2.114.62:10041/digihub/demo/app/v1/signup', [
+                'verify'          => false,
+                'headers'         => ['Content-Type'=>'application/json','Authorization'=>'Basic ZmVfZGVtb2FwcDoyMDIxI0QzbTA='],
+                'body'            => $encd_request,
+                'allow_redirects' => false
+            ]);
+            $arrayresponse = json_decode($response->getBody()->getContents());
+            // dd($arrayresponse);
+
+            if ($response->getStatusCode()==200) {
+                if ($arrayresponse->errorcode=="SCS:200:REG0") {
+                    session()->put(['authenticated'=>true,'user_id'=>$request->email]);
+                    return redirect()->route('login')->with('success','Register Success. Before Login, Please Wait 15 Minutes For Data Synchronization');
+                }else{
+                    return back()->with('error' ,'Email or MSISDN already exist!');
+                }
+            }
+            else{
+                return back()->with('error' ,'Oops, Something went wrong!');
+            }
+        } catch (\Throwable $th) {
+            if (preg_match("/SCS:200:REG1/i",$th)) {
+                return back()->with('error' ,'Register failed');
+            }elseif (preg_match("/SNR:400:REG0/i",$th)) {
+                return back()->with('error' ,'Register failed, please check your input');
+            }elseif (preg_match("/SNR:401:REG0/i",$th)) {
+                return back()->with('error' ,'Register failed, access not permited');
+            }else{
+                return back()->with('error' ,'Oops, Something went wrong!');
+            }
+        }
     }
 }
 
